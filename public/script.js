@@ -125,15 +125,15 @@ function login(username, pass) {
       window.userLoggedIn = true
       loginSect.style.display = 'none'
       resumeSects.style.display = 'block'
-      // daliaApp.loggedInName = username
 
       for (let property in response.user.data) {
         console.log("El property ", property)
 
         for (let input of form.elements) {
-          console.log("El input ", input)
+          console.log("El input ", input.id)
           if (input.id === property) {
             input.value = response.user.data.property
+            console.log("This is the accessor", response.user.data.property)
           }
         }
       }
