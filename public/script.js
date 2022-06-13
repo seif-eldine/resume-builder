@@ -59,28 +59,12 @@ function enableEventListeners() {
   const previousBtn = document.getElementById('previousBtn')
   const nextBtn = document.getElementById('nextBtn')
 
-  previousBtn.addEventListener('click', () => {
-    if (daliaApp.currentActiveSection < 2) {
-      previousBtn.style.display = 'none'
-      nextBtn.style.display = 'inline'
-      return
-    } else {
-      daliaApp.currentActiveSection--
-    }
-    activeSectionUpdater(daliaApp.currentActiveSection)
+  nextBtn.addEventListener('click', () => {
+    nextBtnUpdater()
   })
 
-  nextBtn.addEventListener('click', () => {
-    if (daliaApp.currentActiveSection > 2) {
-      nextBtn.style.display = 'none'
-      previousBtn.style.display = 'inline'
-      return
-
-    } else {
-      daliaApp.currentActiveSection--
-    }
-    daliaApp.currentActiveSection++
-    activeSectionUpdater(daliaApp.currentActiveSection)
+  previousBtn.addEventListener('click', () => {
+    previousBtnUpdater()
   })
 
   loginBtn.addEventListener('click', () => {
@@ -95,24 +79,64 @@ function enableEventListeners() {
 
 //Function to update the state of shown section 
 function activeSectionUpdater(idxReceived){
-  // debugger
-  // console.log('activeSectionUpdater called !')
   const sectsArray = [firstSect, secondSect, thirdSect]
   let counter = 1
 
   for (const sect of sectsArray) {
     if (idxReceived === counter) {
       sect.style.display = 'block'
-      // console.log('sect is', sect)
-      // console.log('counter before ++ is', counter)
       counter++
     }else{
       sect.style.display = 'none'
       counter++
     }
   }
-  idxReceived === 3 ? submitBtn.style.display = 'inline' : submitBtn.style.display = 'none'
+
+  if (idxReceived === 1) {
+    previousBtn.style.display = 'none'
+    nextBtn.style.display = 'inline'
+    submitBtn.style.display = 'none'
+  }
+
+  if (idxReceived === 3) {
+    previousBtn.style.display = 'inline'
+    nextBtn.style.display = 'none'
+    submitBtn.style.display = 'inline'
+  }
 }
+
+function nextBtnUpdater(){
+  // if (daliaApp.currentActiveSection >= 2) {
+  //   // nextBtn.style.display = 'none'
+  //   // previousBtn.style.display = 'inline'
+  //   daliaApp.currentActiveSection++
+  // } else {
+  //   daliaApp.currentActiveSection++
+
+  // }
+  daliaApp.currentActiveSection++
+
+  activeSectionUpdater(daliaApp.currentActiveSection)
+}
+
+function previousBtnUpdater(){
+  // if (daliaApp.currentActiveSection <= 2) {
+  //   // previousBtn.style.display = 'none'
+  //   daliaApp.currentActiveSection--
+  //   return
+  // } else {
+  //   daliaApp.currentActiveSection--
+  // }
+  daliaApp.currentActiveSection--
+
+  activeSectionUpdater(daliaApp.currentActiveSection)
+}
+
+// function nextBtnChecker (btn) {
+//   if(daliaApp.currentActiveSection >= 3) {
+//     btn.style.display = 
+//   }
+// }
 
 function postData(stageNum) {
   const data = { stageNum, username: daliaApp.loggedInName }
