@@ -5,42 +5,37 @@ window.daliaApp = {
   loggedInName: '',
   jwtToken: null,
   currentActiveSection: 1,
-
 }
 
 window.addEventListener('load', () => {
   const firstSect = document.getElementById('firstSect')
   const secondSect = document.getElementById('secondSect')
   const thirdSect = document.getElementById('thirdSect')
-
-  // const fromFirstToSecondBtn = document.getElementById('fromFirstToSecondBtn')
-  // const fromSecondToThirdBtn = document.getElementById('fromSecondToThirdBtn')
-
   const fromSecondToFirstBtn = document.getElementById('fromSecondToFirstBtn')
   const fromThirdToSecondBtn = document.getElementById('fromThirdToSecondBtn')
   const submitBtn = document.getElementById('submitBtn')
 
-  firstSectActive()
+  // firstSectActive()
   enableEventListeners()
 })
 
-function firstSectActive() {
-  firstSect.style.display = 'block'
-  secondSect.style.display = 'none'
-  thirdSect.style.display = 'none'
-}
+// function firstSectActive() {
+//   firstSect.style.display = 'block'
+//   secondSect.style.display = 'none'
+//   thirdSect.style.display = 'none'
+// }
 
-function secondSectActive() {
-  firstSect.style.display = 'none'
-  secondSect.style.display = 'block'
-  thirdSect.style.display = 'none'
-}
+// function secondSectActive() {
+//   firstSect.style.display = 'none'
+//   secondSect.style.display = 'block'
+//   thirdSect.style.display = 'none'
+// }
 
-function thirdSectActive() {
-  firstSect.style.display = 'none'
-  secondSect.style.display = 'none'
-  thirdSect.style.display = 'block'
-}
+// function thirdSectActive() {
+//   firstSect.style.display = 'none'
+//   secondSect.style.display = 'none'
+//   thirdSect.style.display = 'block'
+// }
 
 function enableEventListeners() {
   const firstNameInp = document.getElementById('firstName')
