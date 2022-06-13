@@ -45,6 +45,10 @@ p{
     margin-top: 30px;
 }
 
+#submitBtn{
+    display: none;
+}
+
 #resumeSectsHolder{
     text-align: center;
 

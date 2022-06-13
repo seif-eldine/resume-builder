@@ -109,6 +109,7 @@ function activeSectionUpdater(){
 
   }else{
     thirdSect.style.display = 'block'
+    submitBtn.style.display = 'inline'
   }
 }
 
