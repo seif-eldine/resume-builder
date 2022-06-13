@@ -75,7 +75,7 @@ function enableEventListeners() {
       nextBtn.style.display = 'none'
       previousBtn.style.display = 'inline'
       return
-      
+
     } else {
       daliaApp.currentActiveSection--
     }
@@ -163,11 +163,12 @@ function login(username, pass) {
         stageNum,
       } = response.user.data
 
-      stageNum === 3
-        ? thirdSectActive()
-        : stageNum === 2
-        ? secondSectActive()
-        : firstSectActive()
+      // stageNum === 3
+      //   ? thirdSectActive()
+      //   : stageNum === 2
+      //   ? secondSectActive()
+      //   : firstSectActive()
+      activeSectionUpdater(stageNum)
 
       document.getElementById('firstName').value = firstName ? firstName : ''
       document.getElementById('lastName').value = lastName ? lastName : ''
