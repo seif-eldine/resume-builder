@@ -84,7 +84,7 @@ function enableEventListeners() {
 }
 
 function postData(stageNum) {
-  const data = { stageNum, loggedInName: daliaApp.loggedInName }
+  const data = { stageNum, username: daliaApp.loggedInName }
   const form = document.getElementById('resume-form')
   for (const element of form.elements) {
     if (element.dataset.stage !== stageNum) continue
