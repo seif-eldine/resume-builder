@@ -60,12 +60,25 @@ function enableEventListeners() {
   const nextBtn = document.getElementById('nextBtn')
 
   previousBtn.addEventListener('click', () => {
-    daliaApp.currentActiveSection--
-    // daliaApp.currentActiveSection = daliaApp.currentActiveSection - 1
+    if (daliaApp.currentActiveSection < 2) {
+      previousBtn.style.display = 'none'
+      nextBtn.style.display = 'inline'
+      return
+    } else {
+      daliaApp.currentActiveSection--
+    }
     activeSectionUpdater(daliaApp.currentActiveSection)
   })
 
   nextBtn.addEventListener('click', () => {
+    if (daliaApp.currentActiveSection > 2) {
+      nextBtn.style.display = 'none'
+      previousBtn.style.display = 'inline'
+      return
+      
+    } else {
+      daliaApp.currentActiveSection--
+    }
     daliaApp.currentActiveSection++
     activeSectionUpdater(daliaApp.currentActiveSection)
   })
@@ -73,24 +86,6 @@ function enableEventListeners() {
   loginBtn.addEventListener('click', () => {
     login(usernameInp.value, passwordInp.value)
   })
-
-  // fromFirstToSecondBtn.addEventListener('click', () => {
-  //   postData('1')
-  //   secondSectActive()
-  // })
-
-  // fromSecondToThirdBtn.addEventListener('click', () => {
-  //   postData('2')
-  //   thirdSectActive()
-  // })
-
-  // fromSecondToFirstBtn.addEventListener('click', () => {
-  //   firstSectActive()
-  // })
-
-  // fromThirdToSecondBtn.addEventListener('click', () => {
-  //   secondSectActive()
-  // })
 
   submitBtn.addEventListener('click', () => {
     submitBtn.disabled = true
@@ -112,19 +107,7 @@ function activeSectionUpdater(idxReceived){
       counter++
     }
   }
-
   idxReceived === 3 ? submitBtn.style.display = 'inline' : submitBtn.style.display = 'none'
-
-  // if (daliaApp.currentActiveSection === 1) {
-  //   firstSect.style.display = 'block'
-  
-  // }else if (daliaApp.currentActiveSection === 2) {
-  //   secondSect.style.display = 'block'
-
-  // }else{
-  //   thirdSect.style.display = 'block'
-  //   submitBtn.style.display = 'inline'
-  // }
 }
 
 function postData(stageNum) {
