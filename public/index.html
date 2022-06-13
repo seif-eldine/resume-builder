@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dalia-Task</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <div class="container" style="width: 900px; margin: auto">
+        <div id="loginSectHolder" style="text-align: center">
+            
+            <div class="login-pad">
+                <p class="p-title">Please login to fill in the resume.</p>
+                <form id="loginForm">
+                    <div>
+                        <label for="username">Username </label>
+                        <br>
+                        <input id="username" type="text"/>
+                    </div>
+                    <div class="spacer"></div>
+        
+                    <div>
+                        <label for="password">Password</label>
+                        <br>
+                        <input id="password" />
+                    </div>
+                </form>
+
+                <button type="button" id="loginBtn" class="btn">Login</button>
+
+                <p id="errMsg" style="font-size: 15px; color:red; display: none;">Please make sure that your credentials are correct!</p>
+            </div>
+            <div class="spacer"></div>
+    
+        </div>
+    
+        <div id="resumeSectsHolder">
+            <p class="p-title">Please Fill in the Resume</p>
+    
+            <form id="resume-form">
+        
+                <div id="firstSect">
+                    <div class="input-block">
+                        <label for="firstName">First name:</label>
+                        <br/>
+                        <input id="firstName" name="firstName" data-stage="1" type="text" />
+                    </div>
+            
+                    <div class="input-block">
+                        <label for="lastName">Last name:</label>
+                        <br/>
+                        <input id="lastName" name="lastName" data-stage="1" type="text" />
+                    </div>
+            
+                    <div class="input-block">
+                        <label for="age">Age:</label>
+                        <br/>
+                        <input id="age" name="age" data-stage="1" type="text" />
+                    </div>
+            
+                    <div class="input-block">
+                        <label for="email">Email:</label>
+                        <br/>
+                        <input id="email" name="email" data-stage="1" type="text" />
+                    </div>
+        
+                    <button type="button" id="fromFirstToSecondBtn" class="btn" >Next</button>
+                </div>
+        
+                <div id="secondSect">
+                    <div class="input-block">
+                        <label for="reasons">Give reasons for applying to our company</label>
+                        <br>
+                        <input id="reasons" name="reasons" data-stage="2" type="text" />
+                    </div>
+            
+                    <div class="input-block">
+                        <label for="nextGoal">What is your next goal ?</label>
+                        <br>
+                        <input id="nextGoal" name="nextGoal" data-stage="2" type="text" />
+                    </div>
+                    <button type="button" id="fromSecondToFirstBtn" class="btn">Previous</button>
+                    <button type="button" id="fromSecondToThirdBtn" class="btn">Next</button>
+            
+                </div>
+        
+                <div id="thirdSect">
+                    <div class="input-block">
+                        <label for="fillingEnjoyment">Did you enjoy filling the resume ?</label>
+                        <br>
+                        <input id="fillingEnjoyment" name="fillingEnjoyment" data-stage="3" type="text" />
+                    </div>
+            
+                    <div class="input-block">
+                        <label for="advices">Any advices for improvement ?</label>
+                        <br>
+                        <input id="advices" name="advices" data-stage="3" type="text" />
+                    </div>
+            
+                    <div class="input-block">
+                        <label for="readiness">Are you ready for immediate hiring ?</label>
+                        <br>
+                        <input id="readiness" name="readiness" data-stage="3" type="text" />
+                    </div>
+            
+                    <button type="button" id="fromThirdToSecondBtn" class="btn">Previous</button>
+                    <button id="submitBtn" type="button" class="btn">Submit</button>
+        
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
