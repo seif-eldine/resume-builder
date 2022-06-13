@@ -101,14 +101,8 @@ function enableEventListeners() {
 //Function to update the state of shown section 
 function activeSectionUpdater(idxReceived){
   const sectsArray = [firstSect, secondSect, thirdSect]
-
-  // for (let i = 0; i <= sectsArray; i++) {
-  //   if (i === idxReceived){
-  //     sectsArray[i]
-  //   }
-  // }
-
   let counter = 1
+
   for (const sect of sectsArray) {
     if (idxReceived === counter) {
       sect.style.display = 'block'
@@ -119,16 +113,18 @@ function activeSectionUpdater(idxReceived){
     }
   }
 
-  if (daliaApp.currentActiveSection === 1) {
-    firstSect.style.display = 'block'
-  
-  }else if (daliaApp.currentActiveSection === 2) {
-    secondSect.style.display = 'block'
+  idxReceived === 3 ? submitBtn.style.display = 'inline' : submitBtn.style.display = 'none'
 
-  }else{
-    thirdSect.style.display = 'block'
-    submitBtn.style.display = 'inline'
-  }
+  // if (daliaApp.currentActiveSection === 1) {
+  //   firstSect.style.display = 'block'
+  
+  // }else if (daliaApp.currentActiveSection === 2) {
+  //   secondSect.style.display = 'block'
+
+  // }else{
+  //   thirdSect.style.display = 'block'
+  //   submitBtn.style.display = 'inline'
+  // }
 }
 
 function postData(stageNum) {
