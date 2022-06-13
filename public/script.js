@@ -1,7 +1,6 @@
 /* global daliaApp */
 
 window.daliaApp = {
-  apiStr: "http://localhost:5000/resumes",
   userLoggedIn: false,
   loggedInName: "",
   jwtToken: null,
@@ -91,7 +90,7 @@ function postData(stageNum) {
     if (element.dataset.stage !== stageNum) continue
     data[element.name] = element.value
   }
-  fetch(`${daliaApp.apiStr}/create`, {
+  fetch(`/resumes/create`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -105,7 +104,7 @@ function login(username, pass) {
   const loginSect = document.getElementById("loginSectHolder");
   const resumeSects = document.getElementById("resumeSectsHolder");
 
-  fetch(`${daliaApp.apiStr}/login`, {
+  fetch(`/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
