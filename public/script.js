@@ -2,7 +2,6 @@
 
 window.daliaApp = {
   userLoggedIn: false,
-  // loggedInName: '',
   jwtToken: null,
   currentActiveSection: 1,
 }
@@ -45,7 +44,6 @@ function activeSectionUpdater(idxReceived){
   const secondSect = document.getElementById('secondSect')
   const thirdSect = document.getElementById('thirdSect')
 
-  console.log("idx received", idxReceived)
   const sectsArray = [firstSect, secondSect, thirdSect]
   let counter = 1
 
@@ -87,19 +85,15 @@ function nextBtnUpdater(){
 function previousBtnUpdater(){
   daliaApp.currentActiveSection--
   activeSectionUpdater(Number(daliaApp.currentActiveSection))
-  // postData(daliaApp.currentActiveSection)
 }
 
 function postData(stageNum) {
-  // const data = { stageNum, username: daliaApp.loggedInName }
   const data = { stageNum }
   const form = document.getElementById('resume-form')
   for (const element of form.elements) {
-    console.log('El element', element)
     if (element.type == 'button') continue
     data[element.name] = element.value
   }
-  console.log('data to backend', data)
   fetch(`/resumes/create`, {
     method: 'POST',
     headers: {
@@ -113,6 +107,7 @@ function postData(stageNum) {
 function login(username, pass) {
   const loginSect = document.getElementById('loginSectHolder')
   const resumeSects = document.getElementById('resumeSectsHolder')
+  const form = document.getElementById('resume-form')
 
   fetch(`/resumes/login`, {
     method: 'POST',
@@ -130,49 +125,46 @@ function login(username, pass) {
       window.userLoggedIn = true
       loginSect.style.display = 'none'
       resumeSects.style.display = 'block'
-      daliaApp.loggedInName = username
+      // daliaApp.loggedInName = username
 
-      const {
-        age,
-        email,
-        firstName,
-        lastName,
-        nextGoal,
-        reasons,
-        readiness,
-        enjoyFilling,
-        advices,
-        stageNum,
-      } = response.user.data
+
+      for (let property in response.user.data) {
+        for (let input of form.elements) {
+          console.log("El input ", input)
+          if (input.id === property) {
+            input.value = response.user.data.property
+          }
+        }
+      }
+
+      // const {
+      //   age,
+      //   email,
+      //   firstName,
+      //   lastName,
+      //   nextGoal,
+      //   reasons,
+      //   readiness,
+      //   enjoyFilling,
+      //   advices,
+      //   stageNum,
+      // } = response.user.data
 
       daliaApp.currentActiveSection = stageNum
       activeSectionUpdater(Number(stageNum))
 
-      document.getElementById('firstName').value = firstName ? firstName : ''
-      document.getElementById('lastName').value = lastName ? lastName : ''
-      document.getElementById('age').value = age ? age : ''
-      document.getElementById('email').value = email ? email : ''
-      document.getElementById('reasons').value = reasons ? reasons : ''
-      document.getElementById('nextGoal').value = nextGoal ? nextGoal : ''
-      document.getElementById('fillingEnjoyment').value = enjoyFilling
-        ? enjoyFilling
-        : ''
-      document.getElementById('advices').value = advices ? advices : ''
-      document.getElementById('readiness').value = readiness ? readiness : ''
+      // document.getElementById('firstName').value = firstName ? firstName : ''
+      // document.getElementById('lastName').value = lastName ? lastName : ''
+      // document.getElementById('age').value = age ? age : ''
+      // document.getElementById('email').value = email ? email : ''
+      // document.getElementById('reasons').value = reasons ? reasons : ''
+      // document.getElementById('nextGoal').value = nextGoal ? nextGoal : ''
+      // document.getElementById('fillingEnjoyment').value = enjoyFilling ? enjoyFilling : ''
+      // document.getElementById('advices').value = advices ? advices : ''
+      // document.getElementById('readiness').value = readiness ? readiness : ''
     })
-    .catch((err) => {
+    .catch(() => {
       const errMsg = document.getElementById('errMsg')
       errMsg.style.display = 'block'
     })
-}
-
-function localStorageValueGetter(keyStr) {
-  let val = localStorage.getItem(keyStr)
-  return val
-}
-
-function localStorageValueSetter(arrOfKeys) {
-  arrOfKeys.forEach((val, idx) => {
-    if (idx % 2 === 0) localStorage.setItem(val, arrOfKeys[idx + 1])
-  })
 }
