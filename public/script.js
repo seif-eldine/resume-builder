@@ -74,23 +74,23 @@ function enableEventListeners() {
     login(usernameInp.value, passwordInp.value)
   })
 
-  fromFirstToSecondBtn.addEventListener('click', () => {
-    postData('1')
-    secondSectActive()
-  })
+  // fromFirstToSecondBtn.addEventListener('click', () => {
+  //   postData('1')
+  //   secondSectActive()
+  // })
 
-  fromSecondToThirdBtn.addEventListener('click', () => {
-    postData('2')
-    thirdSectActive()
-  })
+  // fromSecondToThirdBtn.addEventListener('click', () => {
+  //   postData('2')
+  //   thirdSectActive()
+  // })
 
-  fromSecondToFirstBtn.addEventListener('click', () => {
-    firstSectActive()
-  })
+  // fromSecondToFirstBtn.addEventListener('click', () => {
+  //   firstSectActive()
+  // })
 
-  fromThirdToSecondBtn.addEventListener('click', () => {
-    secondSectActive()
-  })
+  // fromThirdToSecondBtn.addEventListener('click', () => {
+  //   secondSectActive()
+  // })
 
   submitBtn.addEventListener('click', () => {
     submitBtn.disabled = true
