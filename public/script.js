@@ -101,6 +101,8 @@ function activeSectionUpdater(idxReceived){
   for (const sect of sectsArray) {
     if (idxReceived === counter) {
       sect.style.display = 'block'
+      console.log('sect is', sect)
+      console.log('counter before ++ is', counter)
       counter++
     }else{
       sect.style.display = 'none'
