@@ -78,7 +78,7 @@ app.use('/resumes', postsRoute)
 //   })
 // }
 
-app.listen(5000, () => {
+app.listen(process.env.PORT || 3000, () => {
   // try {
   //   await connection.authenticate()
   //   console.log('Connection has been established successfully.')
