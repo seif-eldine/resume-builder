@@ -19,6 +19,7 @@ router.post('/login', async (req, res) => {
       res.send('Not allowed, wrong password')
     }
   } catch (err) {
+    console.log(err)
     res.status(500).send()
   }
 })
