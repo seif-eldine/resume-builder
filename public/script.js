@@ -168,6 +168,7 @@ function login(username, pass) {
       //   : stageNum === 2
       //   ? secondSectActive()
       //   : firstSectActive()
+      console.log(stageNum)
       activeSectionUpdater(stageNum)
 
       document.getElementById('firstName').value = firstName ? firstName : ''
