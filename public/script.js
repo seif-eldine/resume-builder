@@ -90,6 +90,7 @@ function postData(stageNum) {
     if (element.dataset.stage !== stageNum) continue
     data[element.name] = element.value
   }
+  console.log("data to backend", data)
   fetch(`/resumes/create`, {
     method: "POST",
     headers: {
