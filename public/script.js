@@ -2,7 +2,7 @@
 
 window.daliaApp = {
   userLoggedIn: false,
-  loggedInName: '',
+  // loggedInName: '',
   jwtToken: null,
   currentActiveSection: 1,
 }
@@ -82,7 +82,7 @@ function nextBtnUpdater(){
   daliaApp.currentActiveSection++
   activeSectionUpdater(Number(daliaApp.currentActiveSection))
 
-  
+
 }
 
 function previousBtnUpdater(){
@@ -91,7 +91,8 @@ function previousBtnUpdater(){
 }
 
 function postData(stageNum) {
-  const data = { stageNum, username: daliaApp.loggedInName }
+  // const data = { stageNum, username: daliaApp.loggedInName }
+  const data = { stageNum }
   const form = document.getElementById('resume-form')
   for (const element of form.elements) {
     if (element.dataset.stage !== stageNum) continue

@@ -28,7 +28,7 @@ router.post('/create', auth, (req, res) => {
   //Since the user is already created in database upon connection, this API will update the record
 
   // let loggedInName = req.body.username
-  let loggedInName = req.user
+  let loggedInName = req.user.username
   console.log("EL USER !!!!!", loggedInName)
   console.log("EL USER !!!!!", loggedInName)
   console.log("EL USER !!!!!", loggedInName)
@@ -36,7 +36,7 @@ router.post('/create', auth, (req, res) => {
   console.log("EL USER !!!!!", loggedInName)
   console.log("EL USER !!!!!", loggedInName)
   console.log("EL USER !!!!!", loggedInName)
-  delete req.body.username
+  // delete req.body.username
 
   connection
     .sync()
