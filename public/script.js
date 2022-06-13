@@ -2,85 +2,114 @@
 
 window.daliaApp = {
   userLoggedIn: false,
-  loggedInName: "",
+  loggedInName: '',
   jwtToken: null,
-  currentActiveSection: "firstSect",
-};
+  currentActiveSection: 1,
 
-window.addEventListener("load", () => {
-  const firstSect = document.getElementById("firstSect");
-  const secondSect = document.getElementById("secondSect");
-  const thirdSect = document.getElementById("thirdSect");
+}
 
-  const fromFirstToSecondBtn = document.getElementById("fromFirstToSecondBtn");
-  const fromSecondToThirdBtn = document.getElementById("fromSecondToThirdBtn");
+window.addEventListener('load', () => {
+  const firstSect = document.getElementById('firstSect')
+  const secondSect = document.getElementById('secondSect')
+  const thirdSect = document.getElementById('thirdSect')
 
-  const fromSecondToFirstBtn = document.getElementById("fromSecondToFirstBtn");
-  const fromThirdToSecondBtn = document.getElementById("fromThirdToSecondBtn");
-  const submitBtn = document.getElementById("submitBtn");
+  // const fromFirstToSecondBtn = document.getElementById('fromFirstToSecondBtn')
+  // const fromSecondToThirdBtn = document.getElementById('fromSecondToThirdBtn')
 
-  firstSectActive();
-  enableEventListeners();
-});
+  const fromSecondToFirstBtn = document.getElementById('fromSecondToFirstBtn')
+  const fromThirdToSecondBtn = document.getElementById('fromThirdToSecondBtn')
+  const submitBtn = document.getElementById('submitBtn')
+
+  firstSectActive()
+  enableEventListeners()
+})
 
 function firstSectActive() {
-  firstSect.style.display = "block";
-  secondSect.style.display = "none";
-  thirdSect.style.display = "none";
+  firstSect.style.display = 'block'
+  secondSect.style.display = 'none'
+  thirdSect.style.display = 'none'
 }
 
 function secondSectActive() {
-  firstSect.style.display = "none";
-  secondSect.style.display = "block";
-  thirdSect.style.display = "none";
+  firstSect.style.display = 'none'
+  secondSect.style.display = 'block'
+  thirdSect.style.display = 'none'
 }
 
 function thirdSectActive() {
-  firstSect.style.display = "none";
-  secondSect.style.display = "none";
-  thirdSect.style.display = "block";
+  firstSect.style.display = 'none'
+  secondSect.style.display = 'none'
+  thirdSect.style.display = 'block'
 }
 
 function enableEventListeners() {
-  const firstNameInp = document.getElementById("firstName");
-  const lastNameInp = document.getElementById("lastName");
-  const ageInp = document.getElementById("age");
-  const emailInp = document.getElementById("email");
-  const reasonsInp = document.getElementById("reasons");
-  const nextGoalInp = document.getElementById("nextGoal");
-  const fillingEnjoymentInp = document.getElementById("fillingEnjoyment");
-  const advicesInp = document.getElementById("advices");
-  const readinessInp = document.getElementById("readiness");
-  const loginBtn = document.getElementById("loginBtn");
-  const usernameInp = document.getElementById("username");
-  const passwordInp = document.getElementById("password");
+  const firstNameInp = document.getElementById('firstName')
+  const lastNameInp = document.getElementById('lastName')
+  const ageInp = document.getElementById('age')
+  const emailInp = document.getElementById('email')
+  const reasonsInp = document.getElementById('reasons')
+  const nextGoalInp = document.getElementById('nextGoal')
+  const fillingEnjoymentInp = document.getElementById('fillingEnjoyment')
+  const advicesInp = document.getElementById('advices')
+  const readinessInp = document.getElementById('readiness')
+  const loginBtn = document.getElementById('loginBtn')
+  const usernameInp = document.getElementById('username')
+  const passwordInp = document.getElementById('password')
 
-  loginBtn.addEventListener("click", () => {
-    login(usernameInp.value, passwordInp.value);
+  const previousBtn = document.getElementById('previousBtn')
+  const nextBtn = document.getElementById('nextBtn')
+
+  previousBtn.addEventListener('click', () => {
+    daliaApp.currentActiveSection--
+    // daliaApp.currentActiveSection = daliaApp.currentActiveSection - 1
+    activeSectionUpdater()
   })
 
-  fromFirstToSecondBtn.addEventListener("click", () => {
+  nextBtn.addEventListener('click', () => {
+    daliaApp.currentActiveSection++
+    activeSectionUpdater()
+  })
+
+  loginBtn.addEventListener('click', () => {
+    login(usernameInp.value, passwordInp.value)
+  })
+
+  fromFirstToSecondBtn.addEventListener('click', () => {
     postData('1')
     secondSectActive()
   })
 
-  fromSecondToThirdBtn.addEventListener("click", () => {
+  fromSecondToThirdBtn.addEventListener('click', () => {
     postData('2')
     thirdSectActive()
   })
 
-  fromSecondToFirstBtn.addEventListener("click", () => {
+  fromSecondToFirstBtn.addEventListener('click', () => {
     firstSectActive()
   })
 
-  fromThirdToSecondBtn.addEventListener("click", () => {
+  fromThirdToSecondBtn.addEventListener('click', () => {
     secondSectActive()
   })
 
-  submitBtn.addEventListener("click", () => {
-    submitBtn.disabled = true;
+  submitBtn.addEventListener('click', () => {
+    submitBtn.disabled = true
     postData('3')
   })
+}
+
+//Function to update the state of shown section 
+function activeSectionUpdater(){
+
+  if (daliaApp.currentActiveSection === 1) {
+    firstSect.style.display = 'block'
+  
+  }else if (daliaApp.currentActiveSection === 2) {
+    secondSect.style.display = 'block'
+
+  }else{
+    thirdSect.style.display = 'block'
+  }
 }
 
 function postData(stageNum) {
@@ -90,25 +119,25 @@ function postData(stageNum) {
     if (element.dataset.stage !== stageNum) continue
     data[element.name] = element.value
   }
-  console.log("data to backend", data)
+  console.log('data to backend', data)
   fetch(`/resumes/create`, {
-    method: "POST",
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
       authorization: daliaApp.jwtToken,
     },
     body: JSON.stringify(data),
-  });
+  })
 }
 
 function login(username, pass) {
-  const loginSect = document.getElementById("loginSectHolder");
-  const resumeSects = document.getElementById("resumeSectsHolder");
+  const loginSect = document.getElementById('loginSectHolder')
+  const resumeSects = document.getElementById('resumeSectsHolder')
 
   fetch(`/resumes/login`, {
-    method: "POST",
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify({
       username: username,
@@ -116,12 +145,12 @@ function login(username, pass) {
     }),
   })
     .then(async (data) => {
-      let response = await data.json();
-      daliaApp.jwtToken = response.accessToken;
-      window.userLoggedIn = true;
-      loginSect.style.display = "none";
-      resumeSects.style.display = "block";
-      daliaApp.loggedInName = username;
+      let response = await data.json()
+      daliaApp.jwtToken = response.accessToken
+      window.userLoggedIn = true
+      loginSect.style.display = 'none'
+      resumeSects.style.display = 'block'
+      daliaApp.loggedInName = username
 
       const {
         age,
@@ -134,39 +163,39 @@ function login(username, pass) {
         enjoyFilling,
         advices,
         stageNum,
-      } = response.user.data;
+      } = response.user.data
 
       stageNum === 3
         ? thirdSectActive()
         : stageNum === 2
         ? secondSectActive()
-        : firstSectActive();
+        : firstSectActive()
 
-      document.getElementById("firstName").value = firstName ? firstName : "";
-      document.getElementById("lastName").value = lastName ? lastName : "";
-      document.getElementById("age").value = age ? age : "";
-      document.getElementById("email").value = email ? email : "";
-      document.getElementById("reasons").value = reasons ? reasons : "";
-      document.getElementById("nextGoal").value = nextGoal ? nextGoal : "";
-      document.getElementById("fillingEnjoyment").value = enjoyFilling
+      document.getElementById('firstName').value = firstName ? firstName : ''
+      document.getElementById('lastName').value = lastName ? lastName : ''
+      document.getElementById('age').value = age ? age : ''
+      document.getElementById('email').value = email ? email : ''
+      document.getElementById('reasons').value = reasons ? reasons : ''
+      document.getElementById('nextGoal').value = nextGoal ? nextGoal : ''
+      document.getElementById('fillingEnjoyment').value = enjoyFilling
         ? enjoyFilling
-        : "";
-      document.getElementById("advices").value = advices ? advices : "";
-      document.getElementById("readiness").value = readiness ? readiness : "";
+        : ''
+      document.getElementById('advices').value = advices ? advices : ''
+      document.getElementById('readiness').value = readiness ? readiness : ''
     })
     .catch((err) => {
-      const errMsg = document.getElementById("errMsg");
-      errMsg.style.display = "block";
-    });
+      const errMsg = document.getElementById('errMsg')
+      errMsg.style.display = 'block'
+    })
 }
 
 function localStorageValueGetter(keyStr) {
-  let val = localStorage.getItem(keyStr);
-  return val;
+  let val = localStorage.getItem(keyStr)
+  return val
 }
 
 function localStorageValueSetter(arrOfKeys) {
   arrOfKeys.forEach((val, idx) => {
-    if (idx % 2 === 0) localStorage.setItem(val, arrOfKeys[idx + 1]);
-  });
+    if (idx % 2 === 0) localStorage.setItem(val, arrOfKeys[idx + 1])
+  })
 }

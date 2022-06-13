@@ -34,6 +34,10 @@ p{
     box-shadow: 10px 10px 17px -10px rgb(0 0 0 / 75%);
 }
 
+#firstSect, #secondSect, #thirdSect{
+    display: none;
+}
+
 .btn{
     padding: 3px 18px;
     background-color: #7721ad96;
