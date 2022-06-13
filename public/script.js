@@ -79,6 +79,7 @@ function enableEventListeners() {
 
 //Function to update the state of shown section 
 function activeSectionUpdater(idxReceived){
+  console.log("idx received", idxReceived)
   const sectsArray = [firstSect, secondSect, thirdSect]
   let counter = 1
 
@@ -116,7 +117,7 @@ function nextBtnUpdater(){
   // }
   daliaApp.currentActiveSection++
 
-  activeSectionUpdater(daliaApp.currentActiveSection)
+  activeSectionUpdater(Number(daliaApp.currentActiveSection))
 }
 
 function previousBtnUpdater(){
@@ -129,7 +130,7 @@ function previousBtnUpdater(){
   // }
   daliaApp.currentActiveSection--
 
-  activeSectionUpdater(daliaApp.currentActiveSection)
+  activeSectionUpdater(Number(daliaApp.currentActiveSection))
 }
 
 // function nextBtnChecker (btn) {
