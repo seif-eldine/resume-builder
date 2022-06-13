@@ -132,8 +132,8 @@ function login(username, pass) {
         for (let input of form.elements) {
           console.log("El input ", input.id)
           if (input.id === property) {
-            input.value = response.user.data.property
-            console.log("This is the accessor", response.user.data.property)
+            input.value = response.user.data[`${property}`]
+            console.log("This is the accessor", response.user.data['property'])
           }
         }
       }
