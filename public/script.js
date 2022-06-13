@@ -99,6 +99,12 @@ function activeSectionUpdater(idxReceived){
     submitBtn.style.display = 'none'
   }
 
+  if (idxReceived === 2) {
+    previousBtn.style.display = 'inline'
+    nextBtn.style.display = 'inline'
+    submitBtn.style.display = 'none'
+  }
+
   if (idxReceived === 3) {
     previousBtn.style.display = 'inline'
     nextBtn.style.display = 'none'
