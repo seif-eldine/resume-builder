@@ -95,7 +95,8 @@ function postData(stageNum) {
   const data = { stageNum }
   const form = document.getElementById('resume-form')
   for (const element of form.elements) {
-    if (element.dataset.stage !== stageNum) continue
+    console.log("El element", element)
+    // if (element.dataset.stage !== stageNum) continue
     data[element.name] = element.value
   }
   console.log('data to backend', data)
