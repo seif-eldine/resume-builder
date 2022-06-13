@@ -95,6 +95,7 @@ function enableEventListeners() {
 
 //Function to update the state of shown section 
 function activeSectionUpdater(idxReceived){
+  debugger
   console.log('activeSectionUpdater called !')
   const sectsArray = [firstSect, secondSect, thirdSect]
   let counter = 1
@@ -171,7 +172,6 @@ function login(username, pass) {
       //   : stageNum === 2
       //   ? secondSectActive()
       //   : firstSectActive()
-      debugger
       console.log(stageNum)
       activeSectionUpdater(stageNum)
 
