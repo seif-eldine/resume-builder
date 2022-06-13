@@ -127,7 +127,6 @@ function login(username, pass) {
       resumeSects.style.display = 'block'
       // daliaApp.loggedInName = username
 
-
       for (let property in response.user.data) {
         console.log("El property ", property)
 
@@ -139,19 +138,7 @@ function login(username, pass) {
         }
       }
 
-      // const {
-      //   age,
-      //   email,
-      //   firstName,
-      //   lastName,
-      //   nextGoal,
-      //   reasons,
-      //   readiness,
-      //   enjoyFilling,
-      //   advices,
-      //   stageNum,
-      // } = response.user.data
-
+      const { stageNum } = response.user.data
       daliaApp.currentActiveSection = stageNum
       activeSectionUpdater(Number(stageNum))
 
