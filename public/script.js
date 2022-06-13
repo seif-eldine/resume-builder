@@ -120,7 +120,7 @@ function login(username, pass) {
       window.userLoggedIn = true;
       loginSect.style.display = "none";
       resumeSects.style.display = "block";
-      loggedInName = username;
+      daliaApp.loggedInName = username;
 
       const {
         age,
