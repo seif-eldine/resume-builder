@@ -95,16 +95,16 @@ function enableEventListeners() {
 
 //Function to update the state of shown section 
 function activeSectionUpdater(idxReceived){
-  debugger
-  console.log('activeSectionUpdater called !')
+  // debugger
+  // console.log('activeSectionUpdater called !')
   const sectsArray = [firstSect, secondSect, thirdSect]
   let counter = 1
 
   for (const sect of sectsArray) {
     if (idxReceived === counter) {
       sect.style.display = 'block'
-      console.log('sect is', sect)
-      console.log('counter before ++ is', counter)
+      // console.log('sect is', sect)
+      // console.log('counter before ++ is', counter)
       counter++
     }else{
       sect.style.display = 'none'
@@ -172,8 +172,8 @@ function login(username, pass) {
       //   : stageNum === 2
       //   ? secondSectActive()
       //   : firstSectActive()
-      console.log(stageNum)
-      activeSectionUpdater(stageNum)
+      // console.log(stageNum)
+      activeSectionUpdater(Number(stageNum))
 
       document.getElementById('firstName').value = firstName ? firstName : ''
       document.getElementById('lastName').value = lastName ? lastName : ''
