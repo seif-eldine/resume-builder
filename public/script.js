@@ -129,6 +129,8 @@ function login(username, pass) {
 
 
       for (let property in response.user.data) {
+        console.log("El property ", property)
+
         for (let input of form.elements) {
           console.log("El input ", input)
           if (input.id === property) {
