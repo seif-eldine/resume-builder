@@ -12,19 +12,10 @@ window.addEventListener('load', () => {
 })
 
 function enableEventListeners() {
-  // const firstNameInp = document.getElementById('firstName')
-  // const lastNameInp = document.getElementById('lastName')
-  // const ageInp = document.getElementById('age')
-  // const emailInp = document.getElementById('email')
-  // const reasonsInp = document.getElementById('reasons')
-  // const nextGoalInp = document.getElementById('nextGoal')
-  // const fillingEnjoymentInp = document.getElementById('fillingEnjoyment')
-  // const advicesInp = document.getElementById('advices')
-  // const readinessInp = document.getElementById('readiness')
-  const loginBtn = document.getElementById('loginBtn')
   const usernameInp = document.getElementById('username')
   const passwordInp = document.getElementById('password')
-
+  
+  const loginBtn = document.getElementById('loginBtn')
   const previousBtn = document.getElementById('previousBtn')
   const nextBtn = document.getElementById('nextBtn')
   const submitBtn = document.getElementById('submitBtn')
@@ -90,6 +81,8 @@ function activeSectionUpdater(idxReceived){
 function nextBtnUpdater(){
   daliaApp.currentActiveSection++
   activeSectionUpdater(Number(daliaApp.currentActiveSection))
+
+  
 }
 
 function previousBtnUpdater(){
