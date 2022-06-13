@@ -8,51 +8,26 @@ window.daliaApp = {
 }
 
 window.addEventListener('load', () => {
-  const firstSect = document.getElementById('firstSect')
-  const secondSect = document.getElementById('secondSect')
-  const thirdSect = document.getElementById('thirdSect')
-  const fromSecondToFirstBtn = document.getElementById('fromSecondToFirstBtn')
-  const fromThirdToSecondBtn = document.getElementById('fromThirdToSecondBtn')
-  const submitBtn = document.getElementById('submitBtn')
-
-  // firstSectActive()
   enableEventListeners()
 })
 
-// function firstSectActive() {
-//   firstSect.style.display = 'block'
-//   secondSect.style.display = 'none'
-//   thirdSect.style.display = 'none'
-// }
-
-// function secondSectActive() {
-//   firstSect.style.display = 'none'
-//   secondSect.style.display = 'block'
-//   thirdSect.style.display = 'none'
-// }
-
-// function thirdSectActive() {
-//   firstSect.style.display = 'none'
-//   secondSect.style.display = 'none'
-//   thirdSect.style.display = 'block'
-// }
-
 function enableEventListeners() {
-  const firstNameInp = document.getElementById('firstName')
-  const lastNameInp = document.getElementById('lastName')
-  const ageInp = document.getElementById('age')
-  const emailInp = document.getElementById('email')
-  const reasonsInp = document.getElementById('reasons')
-  const nextGoalInp = document.getElementById('nextGoal')
-  const fillingEnjoymentInp = document.getElementById('fillingEnjoyment')
-  const advicesInp = document.getElementById('advices')
-  const readinessInp = document.getElementById('readiness')
+  // const firstNameInp = document.getElementById('firstName')
+  // const lastNameInp = document.getElementById('lastName')
+  // const ageInp = document.getElementById('age')
+  // const emailInp = document.getElementById('email')
+  // const reasonsInp = document.getElementById('reasons')
+  // const nextGoalInp = document.getElementById('nextGoal')
+  // const fillingEnjoymentInp = document.getElementById('fillingEnjoyment')
+  // const advicesInp = document.getElementById('advices')
+  // const readinessInp = document.getElementById('readiness')
   const loginBtn = document.getElementById('loginBtn')
   const usernameInp = document.getElementById('username')
   const passwordInp = document.getElementById('password')
 
   const previousBtn = document.getElementById('previousBtn')
   const nextBtn = document.getElementById('nextBtn')
+  const submitBtn = document.getElementById('submitBtn')
 
   nextBtn.addEventListener('click', () => {
     nextBtnUpdater()
@@ -74,6 +49,11 @@ function enableEventListeners() {
 
 //Function to update the state of shown section 
 function activeSectionUpdater(idxReceived){
+
+  const firstSect = document.getElementById('firstSect')
+  const secondSect = document.getElementById('secondSect')
+  const thirdSect = document.getElementById('thirdSect')
+
   console.log("idx received", idxReceived)
   const sectsArray = [firstSect, secondSect, thirdSect]
   let counter = 1
@@ -108,37 +88,14 @@ function activeSectionUpdater(idxReceived){
 }
 
 function nextBtnUpdater(){
-  // if (daliaApp.currentActiveSection >= 2) {
-  //   // nextBtn.style.display = 'none'
-  //   // previousBtn.style.display = 'inline'
-  //   daliaApp.currentActiveSection++
-  // } else {
-  //   daliaApp.currentActiveSection++
-
-  // }
   daliaApp.currentActiveSection++
-
   activeSectionUpdater(Number(daliaApp.currentActiveSection))
 }
 
 function previousBtnUpdater(){
-  // if (daliaApp.currentActiveSection <= 2) {
-  //   // previousBtn.style.display = 'none'
-  //   daliaApp.currentActiveSection--
-  //   return
-  // } else {
-  //   daliaApp.currentActiveSection--
-  // }
   daliaApp.currentActiveSection--
-
   activeSectionUpdater(Number(daliaApp.currentActiveSection))
 }
-
-// function nextBtnChecker (btn) {
-//   if(daliaApp.currentActiveSection >= 3) {
-//     btn.style.display = 
-//   }
-// }
 
 function postData(stageNum) {
   const data = { stageNum, username: daliaApp.loggedInName }
@@ -193,12 +150,6 @@ function login(username, pass) {
         stageNum,
       } = response.user.data
 
-      // stageNum === 3
-      //   ? thirdSectActive()
-      //   : stageNum === 2
-      //   ? secondSectActive()
-      //   : firstSectActive()
-      // console.log(stageNum)
       daliaApp.currentActiveSection = stageNum
       activeSectionUpdater(Number(stageNum))
 
