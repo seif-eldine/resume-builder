@@ -81,13 +81,13 @@ function activeSectionUpdater(idxReceived){
 function nextBtnUpdater(){
   daliaApp.currentActiveSection++
   activeSectionUpdater(Number(daliaApp.currentActiveSection))
-
-
+  postData(daliaApp.currentActiveSection)
 }
 
 function previousBtnUpdater(){
   daliaApp.currentActiveSection--
   activeSectionUpdater(Number(daliaApp.currentActiveSection))
+  postData(daliaApp.currentActiveSection)
 }
 
 function postData(stageNum) {
