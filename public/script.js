@@ -127,30 +127,16 @@ function login(username, pass) {
       resumeSects.style.display = 'block'
 
       for (let property in response.user.data) {
-        console.log("El property ", property)
-
         for (let input of form.elements) {
-          console.log("El input ", input.id)
           if (input.id === property) {
             input.value = response.user.data[`${property}`]
-            console.log("This is the accessor", response.user.data['property'])
           }
         }
       }
-
+      
       const { stageNum } = response.user.data
       daliaApp.currentActiveSection = stageNum
       activeSectionUpdater(Number(stageNum))
-
-      // document.getElementById('firstName').value = firstName ? firstName : ''
-      // document.getElementById('lastName').value = lastName ? lastName : ''
-      // document.getElementById('age').value = age ? age : ''
-      // document.getElementById('email').value = email ? email : ''
-      // document.getElementById('reasons').value = reasons ? reasons : ''
-      // document.getElementById('nextGoal').value = nextGoal ? nextGoal : ''
-      // document.getElementById('fillingEnjoyment').value = enjoyFilling ? enjoyFilling : ''
-      // document.getElementById('advices').value = advices ? advices : ''
-      // document.getElementById('readiness').value = readiness ? readiness : ''
     })
     .catch(() => {
       const errMsg = document.getElementById('errMsg')
