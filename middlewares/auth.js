@@ -10,8 +10,8 @@ const verifyToken = (req, res, next) => {
   }
   try {
     const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
-    console.log("decoded :", decoded)
-    console.log("dcode func:", jwt.decode(token))
+    console.log("decoded >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>:", decoded)
+    console.log("dcode func:>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", jwt.decode(token))
     req.user = decoded
   } catch (err) {
     // TODO : use loggers to log the caught errors to cloud loggers or server
