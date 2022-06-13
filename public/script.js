@@ -62,12 +62,12 @@ function enableEventListeners() {
   previousBtn.addEventListener('click', () => {
     daliaApp.currentActiveSection--
     // daliaApp.currentActiveSection = daliaApp.currentActiveSection - 1
-    activeSectionUpdater()
+    activeSectionUpdater(daliaApp.currentActiveSection)
   })
 
   nextBtn.addEventListener('click', () => {
     daliaApp.currentActiveSection++
-    activeSectionUpdater()
+    activeSectionUpdater(daliaApp.currentActiveSection)
   })
 
   loginBtn.addEventListener('click', () => {
@@ -99,7 +99,25 @@ function enableEventListeners() {
 }
 
 //Function to update the state of shown section 
-function activeSectionUpdater(){
+function activeSectionUpdater(idxReceived){
+  const sectsArray = [firstSect, secondSect, thirdSect]
+
+  // for (let i = 0; i <= sectsArray; i++) {
+  //   if (i === idxReceived){
+  //     sectsArray[i]
+  //   }
+  // }
+
+  let counter = 1
+  for (const sect of sectsArray) {
+    if (idxReceived === counter) {
+      sect.style.display = 'block'
+      counter++
+    }else{
+      sect.style.display = 'none'
+      counter++
+    }
+  }
 
   if (daliaApp.currentActiveSection === 1) {
     firstSect.style.display = 'block'
