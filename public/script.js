@@ -198,6 +198,7 @@ function login(username, pass) {
       //   ? secondSectActive()
       //   : firstSectActive()
       // console.log(stageNum)
+      daliaApp.currentActiveSection = stageNum
       activeSectionUpdater(Number(stageNum))
 
       document.getElementById('firstName').value = firstName ? firstName : ''
