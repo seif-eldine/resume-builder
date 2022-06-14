@@ -76,6 +76,6 @@ the unit testing has that in account as well.
 
 - Another approach for a better experience is to have the resume creation service publicly, however, the client communicates with the backend on each process.
 
-- Better frontend design and better steps handling.
+- Better frontend design for both web & mobile, and better steps handling.
 
 - Input should go through validation process.
