@@ -32,7 +32,7 @@ function enableEventListeners() {
 }
 
 //Function to update the state of shown section 
-function activeSectionUpdater(sectionId){
+function activeSectionUpdater(sectionId = 1){
   const sectionSelector = `.section-${sectionId}`
   const section = document.querySelector(sectionSelector)
 
