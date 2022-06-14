@@ -32,21 +32,15 @@ function enableEventListeners() {
 }
 
 //Function to update the state of shown section 
-function activeSectionUpdater(idxReceived){
-  let counter = 1
+function activeSectionUpdater(sectionId){
+  const sectionSelector = `.section-${sectionId}`
+  const section = document.querySelector(sectionSelector)
 
-  for (const section of document.querySelectorAll('.section')) {
-    nextBtn.style.display = section.dataset.nextDisplay
-    previousBtn.style.display = section.dataset.previousDisplay
-    submitBtn.style.display = section.dataset.submitDisplay
-
-    if (idxReceived === counter++) {
-      section.style.display = 'block'
-      continue
-    }
-
-    section.style.display = 'none'
-  }
+  document.querySelectorAll(`.section:not(${sectionSelector})`).forEach(s => s.style.display = 'none')
+  section.style.display = 'block'
+  nextBtn.style.display = section.dataset.nextDisplay
+  previousBtn.style.display = section.dataset.previousDisplay
+  submitBtn.style.display = section.dataset.submitDisplay
 }
 
 function nextBtnUpdater(){
