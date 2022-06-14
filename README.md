@@ -36,7 +36,7 @@ Unless you don't have "nodemon" setup in your project / or locally, The app will
 
 ## Running unit tests
 
-**Make sure to change the database connection environment variables to the local .env file variables**
+**Make sure to copy .env.example to .env to use the demo credentials**
 
 Run :
 
