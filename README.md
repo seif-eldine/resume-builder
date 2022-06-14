@@ -1,5 +1,12 @@
 # Resume Builder
 
+## Live Demo :
+
+https://dalia-resume-builder-task.herokuapp.com/
+
+
+Note: *This application is hosted on Heroku and the application takes a bit of time to load up*
+
 ## Development/local server
 
 Run:
@@ -45,7 +52,9 @@ to execute the unit tests via [Jest](https://jestjs.io/).
 
 Once the server is up and running it creates a user in the database, with username: `user` and password : `user` which gets hashed first.
 
-if the user goes to the **index.html**, he will face a page that asks for the *username* and *password* , he can put `user` in both to get navigated to different component that asks him to fill in the resume information in steps, each step completed updates the related record in the **postgres** database.
+When the user navigates to the application, he will face a login screen,
+once the user provides the credentials he gets navigated to the service which asks the user to add the needed information.
+Once he completes the steps it gets added as a record in the database **postgres**, PS: each step completed does update the related record in the database.
 
 the API is secured with **JWT** token that is provided in each request from **client** to the **backend server**.
 the unit testing has that in account as well.
