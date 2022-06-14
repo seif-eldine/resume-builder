@@ -40,14 +40,14 @@ const stepConfig = {
 //Function to update the state of shown section 
 function activeSectionUpdater(idxReceived){
 
-  const firstSect = document.getElementById('firstSect')
-  const secondSect = document.getElementById('secondSect')
-  const thirdSect = document.getElementById('thirdSect')
+  // const firstSect = document.getElementById('firstSect')
+  // const secondSect = document.getElementById('secondSect')
+  // const thirdSect = document.getElementById('thirdSect')
 
-  const sectsArray = [firstSect, secondSect, thirdSect]
+  // const sectsArray = [firstSect, secondSect, thirdSect]
   let counter = 1
 
-  for (const sect of sectsArray) {
+  for (const sect of document.querySelectorAll('.section')) {
     if (idxReceived === counter++) {
       sect.style.display = 'block'
       continue
