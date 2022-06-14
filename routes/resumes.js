@@ -1,9 +1,10 @@
 const router = require('express').Router()
 const connection = require('../models/db-init')
 const ResumeUserModel = require('../models/resume')
+const auth = require('../middlewares/auth')
 const jwt = require('jsonwebtoken')
 const bCrypt = require('bcrypt')
-const auth = require('../middlewares/auth')
+
 
 router.post('/login', async (req, res) => {
   try {
@@ -24,9 +25,10 @@ router.post('/login', async (req, res) => {
   }
 })
 
+
 router.post('/create', auth, (req, res) => {
   //Since the user is already created in database upon connection, this API will update the record
-  let loggedInName = req.user.username
+  const loggedInName = req.user.username
 
   connection
     .sync()
@@ -37,7 +39,6 @@ router.post('/create', auth, (req, res) => {
       )
       const resUpdatedUser = await ResumeUserModel.findByPk(updatedUser[0])
       const { username, data } = resUpdatedUser.dataValues
-      // const responseToClient = { username, data }
 
       res
         .status(200)

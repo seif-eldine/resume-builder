@@ -13,6 +13,7 @@ app.use(bodyParser.json())
 // Routes
 app.use('/resumes', postsRoute)
 
+
 // Server bootstrap
 app.listen(process.env.PORT || 3000, () => {
   console.log('Server running')

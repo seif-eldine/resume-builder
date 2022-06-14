@@ -76,7 +76,7 @@ function login(username, pass) {
   const resumeSects = document.getElementById('resumeSectsHolder')
   const form = document.getElementById('resume-form')
 
-  fetch(`/resumes/login`, {
+  fetch(`/login`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
