@@ -101,7 +101,7 @@ function login(username, pass) {
         }
       }
 
-      const { stageNum } = response.user.data
+      const { stageNum = 1 } = response.user.data
       daliaApp.currentActiveSection = stageNum
       activeSectionUpdater(Number(stageNum))
     })
