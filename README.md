@@ -9,6 +9,8 @@ Note: *This application is hosted on Heroku and the application takes a bit of t
 
 ## Development/local server
 
+### Make sure to copy .env.example to .env to use the demo credentials
+
 Run:
 
  ```bash
@@ -36,7 +38,6 @@ Unless you don't have "nodemon" setup in your project / or locally, The app will
 
 ## Running unit tests
 
-**Make sure to copy .env.example to .env to use the demo credentials**
 
 Run :
 
@@ -76,3 +77,5 @@ the unit testing has that in account as well.
 - Another approach for a better experience is to have the resume creation service publicly, however, the client communicates with the backend on each process.
 
 - Better frontend design and better steps handling.
+
+- Input should go through validation process.
