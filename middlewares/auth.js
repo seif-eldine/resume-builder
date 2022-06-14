@@ -12,7 +12,6 @@ const verifyToken = (req, res, next) => {
     const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
     req.user = decoded
   } catch (err) {
-    // TODO : use loggers to log the caught errors to cloud loggers or server
     return res.status(401).send('Invalid Token')
   }
   return next()

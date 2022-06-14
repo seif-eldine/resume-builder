@@ -29,11 +29,15 @@ Unless you don't have "nodemon" setup in your project / or locally, The app will
 
 ## Running unit tests
 
+**Make sure to change the database connection environment variables to the local .env file variables**
+
 Run :
 
 ```bash
 npm test
 ```
+
+
 
 to execute the unit tests via [Jest](https://jestjs.io/).
 
@@ -46,4 +50,20 @@ if the user goes to the **index.html**, he will face a page that asks for the *u
 the API is secured with **JWT** token that is provided in each request from **client** to the **backend server**.
 the unit testing has that in account as well.
 
+# TODOS
 
+- Using config files to save configurations based on the environment.
+
+- Use snapshot testing in [Jest](https://jestjs.io/) to avoid hard coding the values we're testing against.
+
+- Local tests should use in-memory database to avoid fragility of DB credentials.
+
+- Use loggers to log the caught errors to cloud loggers or server
+
+- Building a richer resume builder that has ability to add multiple experiences, education,  certificates and so on, as the task was a proof of concept.
+
+- User login API should be in a separate route.
+
+- Another approach for a better experience is to have the resume creation service publicly, however, the client communicates with the backend on each process.
+
+- Better frontend design and better steps handling.
