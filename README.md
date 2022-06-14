@@ -57,7 +57,7 @@ When the user navigates to the application, he will face a login screen,
 once the user provides the credentials he gets navigated to the service which asks the user to add the needed information.
 Once he completes the steps it gets added as a record in the database **postgres**, PS: each step completed does update the related record in the database.
 
-the API is secured with **JWT** token that is provided in each request from **client** to the **backend server**.
+The API is secured with **JWT** token that is provided in each request from **client** to the **backend server**.
 the unit testing has that in account as well.
 
 # TODOS
@@ -68,7 +68,7 @@ the unit testing has that in account as well.
 
 - Local tests should use in-memory database to avoid fragility of DB credentials.
 
-- Use loggers to log the caught errors to cloud loggers or server
+- Use loggers to log the caught errors to cloud loggers or server.
 
 - Building a richer resume builder that has ability to add multiple experiences, education,  certificates and so on, as the task was a proof of concept.
 
