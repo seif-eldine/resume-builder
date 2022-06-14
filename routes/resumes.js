@@ -26,17 +26,7 @@ router.post('/login', async (req, res) => {
 
 router.post('/create', auth, (req, res) => {
   //Since the user is already created in database upon connection, this API will update the record
-
-  // let loggedInName = req.body.username
   let loggedInName = req.user.username
-  console.log("EL USER !!!!!", loggedInName)
-  console.log("EL USER !!!!!", loggedInName)
-  console.log("EL USER !!!!!", loggedInName)
-  console.log("EL USER !!!!!", loggedInName)
-  console.log("EL USER !!!!!", loggedInName)
-  console.log("EL USER !!!!!", loggedInName)
-  console.log("EL USER !!!!!", loggedInName)
-  // delete req.body.username
 
   connection
     .sync()
@@ -47,12 +37,12 @@ router.post('/create', auth, (req, res) => {
       )
       const resUpdatedUser = await ResumeUserModel.findByPk(updatedUser[0])
       const { username, data } = resUpdatedUser.dataValues
-      const responseToClient = { username, data }
+      // const responseToClient = { username, data }
 
       res
         .status(200)
         .set('Content-Type', 'application/json')
-        .json({ responseToClient })
+        .json({ username, data })
     })
     .catch((err) => {
         console.log(err)

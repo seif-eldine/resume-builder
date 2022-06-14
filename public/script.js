@@ -6,9 +6,7 @@ window.daliaApp = {
   currentActiveSection: 1,
 }
 
-window.addEventListener('load', () => {
-  enableEventListeners()
-})
+window.addEventListener('load', enableEventListeners)
 
 function enableEventListeners() {
   const usernameInp = document.getElementById('username')
@@ -19,13 +17,9 @@ function enableEventListeners() {
   const nextBtn = document.getElementById('nextBtn')
   const submitBtn = document.getElementById('submitBtn')
 
-  nextBtn.addEventListener('click', () => {
-    nextBtnUpdater()
-  })
+  nextBtn.addEventListener('click', nextBtnUpdater)
 
-  previousBtn.addEventListener('click', () => {
-    previousBtnUpdater()
-  })
+  previousBtn.addEventListener('click', previousBtnUpdater)
 
   loginBtn.addEventListener('click', () => {
     login(usernameInp.value, passwordInp.value)
@@ -48,13 +42,11 @@ function activeSectionUpdater(idxReceived){
   let counter = 1
 
   for (const sect of sectsArray) {
-    if (idxReceived === counter) {
+    if (idxReceived === counter++) {
       sect.style.display = 'block'
-      counter++
-    }else{
-      sect.style.display = 'none'
-      counter++
+      continue
     }
+    sect.style.display = 'none'
   }
 
   if (idxReceived === 1) {
@@ -133,7 +125,7 @@ function login(username, pass) {
           }
         }
       }
-      
+
       const { stageNum } = response.user.data
       daliaApp.currentActiveSection = stageNum
       activeSectionUpdater(Number(stageNum))
