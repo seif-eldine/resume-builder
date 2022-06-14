@@ -31,52 +31,22 @@ function enableEventListeners() {
   })
 }
 
-const stepConfig = {
-  '1': { nextBtn: { enabled: true }, previousBtn: {}, submitBtn: {} },
-  '2': { nextBtn: { enabled: true }, previousBtn: { enabled: true }, submitBtn: {} },
-  '3': { nextBtn: {}, previousBtn: { enabled: true }, submitBtn: { enabled: true } }
-}
-
 //Function to update the state of shown section 
 function activeSectionUpdater(idxReceived){
-
-  // const firstSect = document.getElementById('firstSect')
-  // const secondSect = document.getElementById('secondSect')
-  // const thirdSect = document.getElementById('thirdSect')
-
-  // const sectsArray = [firstSect, secondSect, thirdSect]
   let counter = 1
 
-  for (const sect of document.querySelectorAll('.section')) {
+  for (const section of document.querySelectorAll('.section')) {
+    nextBtn.style.display = section.dataset.nextDisplay
+    previousBtn.style.display = section.dataset.previousDisplay
+    submitBtn.style.display = section.dataset.submitDisplay
+
     if (idxReceived === counter++) {
-      sect.style.display = 'block'
+      section.style.display = 'block'
       continue
     }
-    sect.style.display = 'none'
+
+    section.style.display = 'none'
   }
-
-  const config = stepConfig[idxReceived]
-  nextBtn.style.display = config.nextBtn.enabled ? 'inline' : 'none'
-  previousBtn.style.display = config.previousBtn.enabled ? 'inline' : 'none'
-  submitBtn.style.display = config.submitBtn.enabled ? 'inline' : 'none'
-
-  // if (idxReceived === 1) {
-  //   previousBtn.style.display = 'none'
-  //   nextBtn.style.display = 'inline'
-  //   submitBtn.style.display = 'none'
-  // }
-
-  // if (idxReceived === 2) {
-  //   previousBtn.style.display = 'inline'
-  //   nextBtn.style.display = 'inline'
-  //   submitBtn.style.display = 'none'
-  // }
-
-  // if (idxReceived === 3) {
-  //   previousBtn.style.display = 'inline'
-  //   nextBtn.style.display = 'none'
-  //   submitBtn.style.display = 'inline'
-  // }
 }
 
 function nextBtnUpdater(){
